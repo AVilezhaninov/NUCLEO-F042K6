@@ -10,24 +10,24 @@
 /******************************************************************************/
 void InitSystemClock() {
   uint32_t StartUpCounter = 0u;
-  uint32_t HSIStatus = 0u;
+  uint32_t HSEStatus = 0u;
 
   /* Enable HSI */
-  RCC->CR |= RCC_CR_HSION;
+  RCC->CR |= RCC_CR_HSEON;
 
   /* Wait till HSI is ready and exit if timeout is reached */
-  while ((HSIStatus == 0u) && (StartUpCounter < HSI_STARTUP_TIMEOUT)) {
-    HSIStatus = RCC->CR & RCC_CR_HSIRDY;
+  while ((HSEStatus == 0u) && (StartUpCounter < HSI_STARTUP_TIMEOUT)) {
+    HSEStatus = RCC->CR & RCC_CR_HSERDY;
     ++StartUpCounter;
   }
 
-  if (HSIStatus == RCC_CR_HSIRDY) {
+  if (HSEStatus == RCC_CR_HSERDY) {
     /* Flash 1 wait state */
     FLASH->ACR |= FLASH_ACR_LATENCY;
     /* Set PLL multiplication factor */
     RCC->CFGR |= RCC_CFGR_PLLMUL6;
     /* Select PLL input clock source */
-    RCC->CFGR |= RCC_CFGR_PLLSRC_HSI_PREDIV;
+    RCC->CFGR |= RCC_CFGR_PLLSRC_HSE_PREDIV;
     /* Enable PLL */
     RCC->CR |= RCC_CR_PLLON;
     /* Wait till PLL is ready */
@@ -44,7 +44,7 @@ void InitSystemClock() {
 
     SystemCoreClockUpdate();
   } else {
-    /* If HSI fails to start-up, the application will have wrong clock
+    /* If HSE fails to start-up, the application will have wrong clock
     configuration. User can add here some code to deal with this error */
     while (1) {
       continue;
