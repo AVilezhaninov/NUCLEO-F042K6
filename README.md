@@ -8,6 +8,7 @@ Templates and examples for STM32F042K6 on NUCLEO-F042K6 board.
   - **03_HSE_PLL**: config SYSCLK for 48 MHz with HSE and PLL
   - **04_FreeRTOS**: the simplest FreeRTOS project with LED blinking
   - **05_USART_echo**: all USARTs echo from ISR
+  - **06_SPI_loop**: SPI send and receive data
 
 ## Versions
   - IAR EWARM: v8.5
