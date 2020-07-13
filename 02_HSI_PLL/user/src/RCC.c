@@ -8,7 +8,7 @@
 /******************************************************************************/
 /* Exported functions *********************************************************/
 /******************************************************************************/
-void InitSystemClock() {
+void RCC_InitSystemClock() {
   uint32_t StartUpCounter = 0u;
   uint32_t HSIStatus = 0u;
 
@@ -52,12 +52,12 @@ void InitSystemClock() {
   }
 }
 
-uint32_t GetHCLKFrequency() {
+uint32_t RCC_GetHCLKFrequency() {
   return SystemCoreClock;
 }
 
-uint32_t GetPCLK1Frequency() {
-  return (GetHCLKFrequency() >>
+uint32_t RCC_GetPCLK1Frequency() {
+  return (RCC_GetHCLKFrequency() >>
           APBPrescTable[(RCC->CFGR & RCC_CFGR_PPRE) >> RCC_CFGR_PPRE_Pos]);
 }
 
@@ -65,7 +65,7 @@ uint32_t GetPCLK1Frequency() {
  * Blocking delay
  * @param delay
  */
-void StupidDelay(volatile uint32_t delay) {
+void RCC_StupidDelay(volatile uint32_t delay) {
   while (delay-- > 0u) {
     continue;
   }

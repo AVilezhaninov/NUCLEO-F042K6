@@ -56,7 +56,7 @@ static void InitAll() {
 }
 
 static void InitHardware() {
-  InitSystemClock();
+  RCC_InitSystemClock();
   InitGpio();
 }
 

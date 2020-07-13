@@ -20,7 +20,7 @@ static void DummyDelay(int delay);
 /* Main ***********************************************************************/
 /******************************************************************************/
 int main(void) {
-  InitSystemClock();
+  RCC_InitSystemClock();
   InitGpio();
 
   while (1) {

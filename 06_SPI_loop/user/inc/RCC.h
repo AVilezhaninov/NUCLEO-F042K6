@@ -8,11 +8,11 @@
 /******************************************************************************/
 /* Exported functions prototypes **********************************************/
 /******************************************************************************/
-void InitSystemClock();
+void RCC_InitSystemClock();
 
-uint32_t GetHCLKFrequency();
-uint32_t GetPCLK1Frequency();
+uint32_t RCC_GetHCLKFrequency();
+uint32_t RCC_GetPCLK1Frequency();
 
-void StupidDelay(volatile uint32_t delay);
+void RCC_StupidDelay(volatile uint32_t delay);
 
 #endif /* RCC_H_ */

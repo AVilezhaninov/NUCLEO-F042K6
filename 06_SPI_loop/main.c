@@ -34,13 +34,13 @@ void SPI1_IRQHandler(void) {
 int main(void) {
   uint8_t spi_data = 0u;    /* Data to send through SPI */
 
-  InitSystemClock();
+  RCC_InitSystemClock();
   InitSpi1();
 
   while (1) {
     Spi1CsReset();
     SPI1->DR = spi_data++;  /* Send data through SPI1 */
-    StupidDelay(1000u);
+    RCC_StupidDelay(1000u);
   }
 }
 

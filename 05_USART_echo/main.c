@@ -54,7 +54,7 @@ void USART2_IRQHandler() {
 /* Main ***********************************************************************/
 /******************************************************************************/
 int main(void) {
-  InitSystemClock();
+  RCC_InitSystemClock();
   InitUsart1(USART1_BAUDRATE, USART1_IRQ_PRIORITY);
   InitUsart2(USART2_BAUDRATE, USART2_IRQ_PRIORITY);
 
@@ -123,6 +123,6 @@ static void InitUsart2(const uint32_t baudrate, const uint32_t irq_priority) {
  */
 static void SetUsartBaudRate(USART_TypeDef *const usart,
                              const uint32_t baudrate) {
-  usart->BRR = GetPCLK1Frequency() / baudrate;
+  usart->BRR = RCC_GetPCLK1Frequency() / baudrate;
 }
 
